@@ -3,7 +3,7 @@ import getMessages from '@/utlis/api';
 import * as actionTypes from './action-types';
 import * as mutationTypes from './mutation-types';
 
-export const useMessageStore = defineStore('messageStore', {
+export const useMessageStore = defineStore('messageToAdminStore', {
   state: () => ({
     messagestoadminFirst: { id: 0, body: 'nie ma', deactivateStatus: 0 },
     messagestoadminLoading: false,
@@ -53,6 +53,26 @@ export const useMessageStore = defineStore('messageStore', {
         .finally(() => {
           this.SET_MESSAGE_LOADING(false);
         });
+    },
+    fetchAdminMessage(token) {
+      if (this.messagestoadminLoading || this.messagestoadminFirst.length) return;
+      let tokensend=token;
+      //commit(mutationTypes.SET_MESSAGE_LOADING, true);
+      getMessages(tokensend)
+        .then((data) => {
+          this.updateMesseges(data);
+        })
+        .catch(() => {
+       //   commit(mutationTypes.SET_MESSAGE_ERROR, 'Server error');
+        //  dispatch(actionTypes.CLEAR_MESSAGE);
+        })
+        .finally(() => {
+         // commit(mutationTypes.SET_MESSAGE_LOADING, false);
+        });
+
+    },
+    updateMesseges(payload) {
+      this.messagestoadminFirst = payload
     },
     CLEAR_MESSAGE: () => {
       this.SET_MESSAGE_LOADING(false);

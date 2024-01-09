@@ -32,8 +32,8 @@ export const useMessegesFromAdminStore = defineStore('messegesFromAdminStore', {
           commit(mutationTypes.SET_MESSAGEAF_LOADING, false);
         });
     },
-    fetchAdminMessageAF({ state, commit, dispatch }) {
-      if (state.messagestoadminLoading || !Array.isArray(state.messagestoadminFirst) || state.messagestoadminFirst.length === 0) return;
+    fetchAdminMessageAF() {
+      if (this.messagestoadminLoading || !Array.isArray(this.messagestoadminFirst) || this.messagestoadminFirst.length === 0) return;
       console.log('Enter');
       commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
       getMessages()

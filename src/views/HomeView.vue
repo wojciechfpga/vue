@@ -178,8 +178,8 @@ export default {
     // Use onMounted hook to dispatch the action when the component is mounted
     onMounted(() => {
 
-      messegesTo.dispatch('fetchAdminMessage', this.userToken);
-      userStore.dispatch(actionTypes.CLEAR_MESSAGE);
+      messegesTo.fetchAdminMessage(userToken);
+     // userStore.dispatch(actionTypes.CLEAR_MESSAGE);
     });
 
     return {
@@ -293,8 +293,8 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('fetchAdminMessage', this.userToken);
-    this.$store.dispatch(actionTypes.CLEAR_MESSAGE);
+   // this.$store.dispatch('fetchAdminMessage', this.userToken);
+  //  this.$store.dispatch(actionTypes.CLEAR_MESSAGE);
     this.articles();
   },
   data() {

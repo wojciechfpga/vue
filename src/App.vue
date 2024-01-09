@@ -1,13 +1,13 @@
 <template>
-  <div id="app">
+  <div id="appl">
     <the-header />
     <login-register :IsToken="userStatus || adminStatus" />
     <div class="main-container">
       <router-view class="routerc" />
       <div>
-  <!-- MessagesBox component goes here -->
-  <messages-box :messagefromadmin="messegesFromAdminState"/>
-</div>
+        <!-- MessagesBox component goes here -->
+        <messages-box :messagefromadmin="messegesFromAdminState" />
+      </div>
     </div>
     <the-footer />
   </div>
@@ -20,7 +20,7 @@ import LoginRegister from '@/components/LoginRegister.vue';
 import MessagesBox from '@/components/MessagesBox.vue';
 import { ref, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
-import { useMessegesFromAdminStore} from '@/stores/messegesFromAdmin';
+import { useMessegesFromAdminStore } from '@/stores/messegesFromAdmin';
 
 export default {
   name: 'App',
@@ -31,63 +31,67 @@ export default {
     MessagesBox,
   },
   setup() {
-  const userStore = useUserStore();
-  const messegesStore = useMessegesFromAdminStore();
+    const userStore = useUserStore();
+    const messegesStore = useMessegesFromAdminStore();
 
-  // Access state
-  const userData = ref(userStore.userData);
-  const userLoading = ref(userStore.userLoading);
-  const userToken = ref(userStore.token);
-  
-  // Access messegesFromAdmin state
-  const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
+    // Access state
+    const userData = ref(userStore.userData);
+    const userLoading = ref(userStore.userLoading);
+    const userToken = ref(userStore.token);
 
-  // Access getters
-  const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
+    // Access messegesFromAdmin state
+    const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
 
-  // Call actions
-  const loginUser = async (email, password) => {
-    await userStore.LOGIN({ email, password });
-  };
+    // Access getters
+    const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
 
-  const logoutUser = () => {
-    userStore.LOGOUT();
-  };
+    // Call actions
+    const loginUser = async (email, password) => {
+      await userStore.LOGIN({ email, password });
+    };
 
-  const fetchCurrentUser = async () => {
-    await userStore.FETCH_CURRENT_USER();
-  };
+    const logoutUser = () => {
+      userStore.LOGOUT();
+    };
 
-  const fetchAdminMessageAF = async () => {
-    await messegesStore.fetchAdminMessageAF();
-  };
+    const fetchCurrentUser = async () => {
+      await userStore.FETCH_CURRENT_USER();
+    };
 
-  // Use onMounted hook to dispatch the action when the component is mounted
-  onMounted(() => {
-    fetchAdminMessageAF();
-  });
+    const fetchAdminMessageAF = async () => {
+      await messegesStore.fetchAdminMessageAF();
+    };
 
-  return {
-    userData,
-    userLoading,
-    userToken,
-    userStatus,
-    loginUser,
-    logoutUser,
-    fetchCurrentUser,
-    messegesFromAdminState,
-  };
-},
+    // Use onMounted hook to dispatch the action when the component is mounted
+    //onMounted(() => {
+    // fetchAdminMessageAF();
+    //});
+
+    return {
+      userData,
+      userLoading,
+      userToken,
+      userStatus,
+      loginUser,
+      logoutUser,
+      fetchCurrentUser,
+      messegesFromAdminState,
+    };
+  },
   methods: {
     updateParent() {
       return this.$store.getters.getMyToken;
     },
   },
+  created() {
+    const myStore = useMessegesFromAdminStore();
+    myStore.fetchAdminMessageAF();
+  },
 };
 </script>
 
 <style lang="scss">
-#app {
+#appl {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -97,21 +101,26 @@ export default {
 
 .main-container {
   display: flex;
-  justify-content: center; /* Space between router-view and messages-area */
+  justify-content: center;
+  /* Space between router-view and messages-area */
 }
 
 .messages-area {
   width: 200px;
   padding: 16px;
   background-color: #ffffff;
-  border: 2px solid #e74c3c; /* Red border */
+  border: 2px solid #e74c3c;
+  /* Red border */
   border-radius: 8px;
-  margin-left: 16px; /* Adjust margin as needed */
+  margin-left: 16px;
+  /* Adjust margin as needed */
   margin-right: 0;
 }
+
 .routerc {
   width: 80%;
 }
+
 nav {
   padding: 30px;
 
@@ -133,5 +142,4 @@ nav {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
-}
-</style>
+}</style>
