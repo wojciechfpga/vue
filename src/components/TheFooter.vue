@@ -164,7 +164,7 @@ export default {
 
 /* Add this style for the social links */
 .social-links {
-  margin-top: 15px;
+  margin-top: 15px !important;
 }
 
 .social-links a {
@@ -174,42 +174,42 @@ export default {
   margin-right: 10px;
   text-align: center;
   line-height: 30px;
-  /* Remove this line to fix the issue */
   border-radius: 50%;
-  color: red;
-  /* Set the color to white or any other color you prefer */
-  background-color: #333;
+  color: red !important;
+  background-color: white;
   transition: all 0.5s ease;
+}
+
+.social-links a i {
+  font-size: 1.5em;
+  /* You can adjust the font-size as needed */
+  border: none;
 }
 
 .social-links a[data-v-dd042928] {
   display: inline-block;
-  height: 180px;
-  /* Triple the size */
-  width: 180px;
-  /* Triple the size */
-  margin-right: 60px;
-  /* Increase the spacing */
+  height: 60px !important; /* Adjust the size as needed */
+  width: 60px !important; /* Adjust the size as needed */
+  margin-right: 10px;
   text-align: center;
-  line-height: normal !important;
+  line-height: 60px; /* Adjust the distance between icons */
   border-radius: 50%;
   color: red !important;
-  background: none !important;
+  background: none;
   transition: all 0.5s ease;
 }
 
 .social-links a[data-v-dd042928] i {
-  font-size: 1.5em;
-  /* Triple the size */
-  border: none !important;
+  font-size: 3em !important; /* Adjust the size as needed */
+  border: none;
 }
 
 .social-links a:hover {
-  background-color: black;
+  background-color:white  !important;
 }
 
 .social-links i {
-  border: none;
+  border: none !important;
 }
 
 .row {
