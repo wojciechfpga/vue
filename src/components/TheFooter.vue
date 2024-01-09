@@ -181,7 +181,7 @@ export default {
 }
 
 .social-links a i {
-  font-size: 1.5em;
+  font-size: 3em;
   /* You can adjust the font-size as needed */
   border: none;
 }
@@ -192,7 +192,7 @@ export default {
   width: 60px !important; /* Adjust the size as needed */
   margin-right: 10px;
   text-align: center;
-  line-height: 60px; /* Adjust the distance between icons */
+  line-height: 80px; /* Increase the line-height to create more spacing */
   border-radius: 50%;
   color: red !important;
   background: none;
@@ -211,7 +211,17 @@ export default {
 .social-links i {
   border: none !important;
 }
-
+.footer-col .social-links a[data-v-49c9d9a5] {
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: black;
+    transition: all 0.5s ease;
+}
 .row {
   display: flex;
   flex-wrap: wrap;
