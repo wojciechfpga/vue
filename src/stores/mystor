@@ -1,0 +1,25 @@
+// store/messagesStore.js
+import { defineStore } from 'pinia';
+
+export const useMessagesStore = defineStore('myStore', {
+  state: () => ({
+    messages: [
+      // Initialize with some default data if needed
+      { message: 'Initial message', createDate: new Date() },
+    ],
+  }),
+  mutations: {
+    setMessages(state, messages) {
+      state.messages = messages;
+    },
+  },
+  actions: {
+    // Actions can be used to perform asynchronous operations
+  },
+  getters: {
+    // Getters can be used to compute derived state based on store state
+  },
+});
+
+// export it if needed
+// export default useMessagesStore;

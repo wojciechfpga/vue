@@ -1,77 +1,137 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-
-<h1>Zrobione</h1>
-  </header>
-
-
+  <div id="app">
+    <the-header />
+    <login-register :IsToken="userStatus || adminStatus" />
+    <div class="main-container">
+      <router-view class="routerc" />
+      <div>
+  <!-- MessagesBox component goes here -->
+  <messages-box :messagefromadmin="messegesFromAdminState"/>
+</div>
+    </div>
+    <the-footer />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script>
+import TheHeader from '@/components/TheHeader.vue';
+import TheFooter from '@/components/TheFooter.vue';
+import LoginRegister from '@/components/LoginRegister.vue';
+import MessagesBox from '@/components/MessagesBox.vue';
+import { ref, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
+import { useMessegesFromAdminStore} from '@/stores/messegesFromAdmin';
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+export default {
+  name: 'App',
+  components: {
+    TheHeader,
+    TheFooter,
+    LoginRegister,
+    MessagesBox,
+  },
+  setup() {
+  const userStore = useUserStore();
+  const messegesStore = useMessegesFromAdminStore();
 
-nav {
-  width: 100%;
-  font-size: 12px;
+  // Access state
+  const userData = ref(userStore.userData);
+  const userLoading = ref(userStore.userLoading);
+  const userToken = ref(userStore.token);
+  
+  // Access messegesFromAdmin state
+  const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
+
+  // Access getters
+  const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
+
+  // Call actions
+  const loginUser = async (email, password) => {
+    await userStore.LOGIN({ email, password });
+  };
+
+  const logoutUser = () => {
+    userStore.LOGOUT();
+  };
+
+  const fetchCurrentUser = async () => {
+    await userStore.FETCH_CURRENT_USER();
+  };
+
+  const fetchAdminMessageAF = async () => {
+    await messegesStore.fetchAdminMessageAF();
+  };
+
+  // Use onMounted hook to dispatch the action when the component is mounted
+  onMounted(() => {
+    fetchAdminMessageAF();
+  });
+
+  return {
+    userData,
+    userLoading,
+    userToken,
+    userStatus,
+    loginUser,
+    logoutUser,
+    fetchCurrentUser,
+    messegesFromAdminState,
+  };
+},
+  methods: {
+    updateParent() {
+      return this.$store.getters.getMyToken;
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 2rem;
+  color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.main-container {
+  display: flex;
+  justify-content: center; /* Space between router-view and messages-area */
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.messages-area {
+  width: 200px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 2px solid #e74c3c; /* Red border */
+  border-radius: 8px;
+  margin-left: 16px; /* Adjust margin as needed */
+  margin-right: 0;
 }
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+.routerc {
+  width: 80%;
 }
+nav {
+  padding: 30px;
 
-nav a:first-of-type {
-  border: 0;
-}
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    &.router-link-exact-active {
+      color: #42b983;
+    }
   }
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
