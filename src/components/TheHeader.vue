@@ -129,14 +129,21 @@ export default {
   border: none;
 }
 .highlight-box {
-  transition: background-color 0.3s ease;
+  transition: none; 
+
   /* Adding transition for a smooth effect */
 }
 
 /* Hover state styling */
 .highlight-box:hover {
-  background-color: darkcyan;
+  background-color: white;
   /* Change this to the desired highlight color */
+  height: calc(20px + 1em); ; /* Increase the size by a factor of 1.2 */
+  color:black;
+  margin-top: 10px;
+  font-weight: bold;
+  color:red;
+  transition: width 0.5s ease-out, height 0.5s ease-out;
 }
 
 .navbarmain {
