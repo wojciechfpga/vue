@@ -6,7 +6,7 @@
       <router-view class="routerc" />
       <div>
         <!-- MessagesBox component goes here -->
-        <messages-box :messagefromadmin="messegesFromAdminState" />
+        <messages-box :messagefromadmin="message" />
       </div>
     </div>
     <the-footer />
@@ -18,7 +18,7 @@ import TheHeader from '@/components/TheHeader.vue';
 import TheFooter from '@/components/TheFooter.vue';
 import LoginRegister from '@/components/LoginRegister.vue';
 import MessagesBox from '@/components/MessagesBox.vue';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { useMessegesFromAdminStore } from '@/stores/messegesFromAdmin';
 
@@ -45,7 +45,7 @@ export default {
     // Access getters
     const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
     const adminStatus = ref(userStore.GET_CURRENT_USER_ADMIN_STATUS);
-
+    const message = computed(() => messegesStore.GET_MESSAGEAF_LIST);
     // Call actions
     const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
@@ -62,7 +62,10 @@ export default {
     const fetchAdminMessageAF = async () => {
       await messegesStore.fetchAdminMessageAF();
     };
-
+    onMounted(() => {
+      // Call the action to fetch messages when the component is mounted
+      messegesStore.fetchAdminMessageAF();
+    });
     // Use onMounted hook to dispatch the action when the component is mounted
     //onMounted(() => {
     // fetchAdminMessageAF();
@@ -78,13 +81,10 @@ export default {
       fetchCurrentUser,
       messegesFromAdminState,
       adminStatus,
+      message,
     };
   },
-  methods: {
-    updateParent() {
-      return this.$store.getters.getMyToken;
-    },
-  },
+ 
   created() {
     const myStore = useMessegesFromAdminStore();
     myStore.fetchAdminMessageAF();

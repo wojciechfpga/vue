@@ -33,8 +33,12 @@ export const useMessegesFromAdminStore = defineStore('messegesFromAdminStore', {
         });
     },
     fetchAdminMessageAF() {
-      if (this.messagestoadminLoading || !Array.isArray(this.messagestoadminFirst) || this.messagestoadminFirst.length === 0) return;
-      console.log('Enter');
+      console.log('enter1');
+      console.log(this.messagestoadminLoading);
+        console.log(!Array.isArray(this.messagestoadminFirst));
+        console.log(this.messagestoadminFirst.length === 0);
+      if (this.messagestoadminLoading ||  this.messagestoadminFirst.length === 0) return;
+      console.log('Enter2');
     //  commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
       getMessages()
       .then((data) => {

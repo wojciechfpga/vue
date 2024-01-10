@@ -27,7 +27,7 @@ import Loader from '@/components/Loader.vue';
 
 import * as actionTypes from '@/store/action-types';
 import * as mutationTypes from '@/store/mutation-types';
-import { mapGetters } from 'vuex';
+
 import * as getterTypes from '@/store/getter-types';
 export default {
   name: 'login',

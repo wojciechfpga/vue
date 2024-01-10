@@ -28,12 +28,12 @@ export default {
     reversedMessage() {
       return this.messagefromadmin;
     },
-    methods: {
+
       convertdate(DateA) {
         let dt = new Date(DateA);
         return dt.toLocaleDateString('pl-PL');
       },
-    },
+  
   },
 };
 </script>

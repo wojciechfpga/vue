@@ -46,7 +46,7 @@ export default {
 
     // Access getters
     const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
-
+    const adminStatus = ref(userStore.GET_CURRENT_USER_ADMIN_STATUS);
     // Call actions
     const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
@@ -70,6 +70,7 @@ export default {
       loginUser,
       logoutUser,
       fetchCurrentUser,
+      adminStatus,
     };
   },
 };
