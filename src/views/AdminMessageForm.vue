@@ -25,8 +25,8 @@
 
 <script>
 import axios from 'axios';
-import * as getterTypes from '@/store/getter-types';
-import { mapGetters } from 'vuex';
+import * as getterTypes from '@/stores/getter-types';
+import { useUserStore } from '@/stores/user';
 const MAX_DELAY = 2500;
 const postMessage = (url, body, subject, token) => new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -60,10 +60,25 @@ export default {
       subject: "",
     };
   },
-  computed: {
-    ...mapGetters({
-      userToken: getterTypes.GET_CURRENT_USER_TOKEN,
-    }),
+  setup() {
+    const userStore = useUserStore();
+
+    const userToken = ref(userStore.token);
+
+
+    // Use onMounted hook to dispatch the action when the component is mounted
+    onMounted(() => {
+
+      messegesTo.fetchAdminMessage(userToken);
+     // userStore.dispatch(actionTypes.CLEAR_MESSAGE);
+    });
+
+    return {
+
+      userToken,
+ 
+    };
+  },
 
   },
   methods: {
