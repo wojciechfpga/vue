@@ -19,7 +19,7 @@ export const useMessegesFromAdminStore = defineStore('messegesFromAdminStore', {
     [actionTypes.FETCH_MESSAGEAF]({ state, commit, dispatch }) {
       if (state.messagestoadminLoading || state.messagestoadminFirst.length) return;
 
-      commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
+    //  commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
       getMessages()
         .then((data) => {
           commit(mutationTypes.SET_MESSAGEAF_LIST, data);
@@ -35,20 +35,26 @@ export const useMessegesFromAdminStore = defineStore('messegesFromAdminStore', {
     fetchAdminMessageAF() {
       if (this.messagestoadminLoading || !Array.isArray(this.messagestoadminFirst) || this.messagestoadminFirst.length === 0) return;
       console.log('Enter');
-      commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
+    //  commit(mutationTypes.SET_MESSAGEAF_LOADING, true);
       getMessages()
       .then((data) => {
         console.log('Data from API:', data);
-        commit(mutationTypes.SET_MESSAGEAF_LIST, data);
+        this.updateMesseges(data);
       })
       .catch((error) => {
-        console.error('Error from API:', error);
-        commit(mutationTypes.SET_MESSAGEAF_ERROR, 'Server error');
-        dispatch(actionTypes.CLEAR_MESSAGEAF);
+    //    console.error('Error from API:', error);
+    //    commit(mutationTypes.SET_MESSAGEAF_ERROR, 'Server error');
+    //    dispatch(actionTypes.CLEAR_MESSAGEAF);
       })
       .finally(() => {
-        commit(mutationTypes.SET_MESSAGEAF_LOADING, false);
+    //    commit(mutationTypes.SET_MESSAGEAF_LOADING, false);
       });
+    },
+    updateMesseges(payload) {
+      this.messagestoadminFirst = payload
+    },
+    updateMesseges(payload) {
+      this.messagestoadminFirst = payload
     },
     [actionTypes.CLEAR_MESSAGEAF]({ commit }) {
       commit(mutationTypes.SET_MESSAGEAF_LOADING, false);

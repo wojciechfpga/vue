@@ -119,7 +119,7 @@ const post = (url, kindOfArticle, token) => new Promise((resolve, reject) => {
 
 
 
-const getArticles = (kindOfArticle, token) => post('/getarticles', kindOfArticle, token);
+const getArticles = (kindOfArticle, token) => post('/api/getarticles', kindOfArticle, token);
 
 
 const postDelete = (url, title, token) => new Promise((resolve, reject) => {

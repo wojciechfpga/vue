@@ -17,7 +17,7 @@ const get = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getMessages = (token) => get('/getusermessages',token);
+const getMessages = (token) => get('/api/getusermessages',token);
 
 const getCurrentUser = (token) => get('/getusermessages',token);
 export default getMessages;

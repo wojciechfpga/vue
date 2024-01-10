@@ -14,7 +14,7 @@ const get = (url) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getMessages = () => get('/messagesfromadmin');
+const getMessages = () => get('/api/messagesfromadmin');
 export default getMessages;
 // export {
 // eslint-disable-next-line
