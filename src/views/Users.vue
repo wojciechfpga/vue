@@ -79,7 +79,8 @@
 
 <script>
 import axios from 'axios';
-
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 const MAX_DELAY = 2500;
 
 const getSub = (url,token) => new Promise((resolve, reject) => {
@@ -186,16 +187,24 @@ const postSetBan = (url,name,token) => new Promise((resolve, reject) => {
 
 
 const banUser = (name,token) => postSetBan('/banuser',name,token);
-import * as getterTypes from '@/store/getter-types';
-import { mapGetters } from 'vuex';
+import * as getterTypes from '@/stores/getter-types';
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 export default {
   name: 'users',
-  computed: {
-    ...mapGetters({
-      userToken: getterTypes.GET_CURRENT_USER_TOKEN,
-      adminStatus: getterTypes.GET_CURRENT_USER_ADMIN_STATUS,
-    }),
+  setup() {
+    const userStore = useUserStore();
 
+    // Access getters
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
+
+    return {
+      userStatus,
+      adminStatus,
+      userToken,
+    };
   },
   methods: {
     convertdate(DateA) {

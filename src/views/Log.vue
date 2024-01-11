@@ -1,30 +1,35 @@
 <template>
   <div>
     <div v-show="logstatuser || logstatadmin">
-      <p>Zalogowano poprawnie</p>
+      <h1>Zalogowano poprawnie</h1>
     </div>
     <div v-show="!logstatuser && !logstatadmin">
-      <p>Zalogowano niepoprawnie</p>
+      <h1>Zalogowano niepoprawnie</h1>
     </div>
-<p>{{ logstatadmin }}</p>
-<p>{{ logstatuser }}</p>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import * as getterTypes from '@/store/getter-types';
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
+import * as getterTypes from '@/stores/getter-types';
   export default {
     name:'Log',
     created() {
       setTimeout( () => this.$router.push({ path: '/'}), 15000);
     },
-    computed: {
-    ...mapGetters({
-      logstatadmin: getterTypes.GET_CURRENT_USER_ADMIN_STATUS,
-      logstatuser:getterTypes.GET_CURRENT_USER_STATUS,
-    },
-    ),
+
+  setup() {
+    const userStore = useUserStore();
+
+    // Access getters
+    const logstatuser = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const logstatadmin = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+
+    return {
+      logstatuser,
+      logstatadmin 
+    };
   },
   }
 </script>

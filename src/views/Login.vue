@@ -25,22 +25,32 @@
 <script>
 import Loader from '@/components/Loader.vue';
 
-import * as actionTypes from '@/store/action-types';
-import * as mutationTypes from '@/store/mutation-types';
-
+import * as actionTypes from '@/stores/action-types';
+import * as mutationTypes from '@/stores/mutation-types';
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 import * as getterTypes from '@/store/getter-types';
 export default {
   name: 'login',
   components: {
     Loader,
   },
-  computed: {
-    ...mapGetters({
-      adminStatus: getterTypes.GET_CURRENT_USER_ADMIN_STATUS,
-      userStatus: getterTypes.GET_CURRENT_USER_STATUS,
-      userToken: getterTypes.GET_CURRENT_USER_TOKEN,
-    },
-    ),
+  setup() {
+    const userStore = useUserStore();
+
+    // Access getters
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
+    const loginUser = async (email, password) => {
+      await userStore.LOGIN({ email, password });
+    };
+    return {
+      userStatus,
+      adminStatus,
+      userToken,
+      loginUser,
+    };
   },
   data() {
     return {
@@ -65,7 +75,7 @@ export default {
         this.error = 'Email must have at least 6 characters';
       } else {
         this.loading = true;
-        await this.$store.dispatch(actionTypes.LOGIN, { email: this.email, password: this.password });
+        await this.loginUser(this.email, this.password);
         this.result.userSuccess = await this.userStatus;
         this.result.adminSuccess = await this.adminStatus;
         if (this.result.adminSuccess || this.result.adminSuccess) {

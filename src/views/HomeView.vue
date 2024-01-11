@@ -59,15 +59,14 @@
 </template>
 
 <script>
-import * as actionTypes from '@/stores/action-types';
-import * as getterTypes from '@/stores/getter-types';
+
 
 import UsersMessages from '@/components/UsersMessages.vue';
 import CheckMessageToAdmin from '@/components/CheckMessageToAdmin.vue';
 import '@fortawesome/fontawesome-free/css/all.css'
 import Loader from '@/components/Loader.vue';
 import Error from '@/components/Error.vue';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { useMessageStore } from '@/stores/messegesToAdmin';
 /*function arrayBufferToBase64(buffer) {
@@ -160,8 +159,8 @@ export default {
     const userToken = ref(userStore.token);
     const messagetoadminFirst = ref(messegesTo);
     // Access getters
-    const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
-    const adminStatus = ref(userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
     // Call actions
     const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
@@ -193,17 +192,7 @@ export default {
       adminStatus,
     };
   },
-  /*computed: {
-    ...mapGetters({
-      messagetoadminFirst: getterTypes.GET_MESSAGE_LIST,
-      messagetoadminLoading: getterTypes.GET_MESSAGE_LOADING,
-      messagetoadminError: getterTypes.GET_MESSAGE_ERROR,
-      userToken: getterTypes.GET_CURRENT_USER_TOKEN,
-      adminStatus: getterTypes.GET_CURRENT_USER_ADMIN_STATUS,
-      userStatus: getterTypes.GET_CURRENT_USER_STATUS,
-    }),
 
-  },*/
   methods: {
     getTelegramShareLink(title, content, imageUrl) {
       const encodedTitle = encodeURIComponent(title);

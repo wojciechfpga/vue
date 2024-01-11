@@ -95,8 +95,8 @@
 </template>
 
 <script>
-import * as getterTypes from '@/store/getter-types';
-import { mapGetters } from 'vuex';
+
+
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 const MAX_DELAY = 2500;
@@ -198,7 +198,7 @@ export default {
         return dateFilterPassed && degreeFilterPassed;
       });
     },
-  },
+  
   methods: {
     asubmitForm() {
       console.log('Before postmessage');

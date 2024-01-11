@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import * as getterTypes from '@/store/getter-types';
-import { mapGetters } from 'vuex';
+import * as getterTypes from '@/stores/getter-types';
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
 import axios from 'axios';
 
 const MAX_DELAY = 2500;
@@ -50,12 +51,22 @@ export default {
       result: false
     }
   },
-  computed: {
-    ...mapGetters({
-      userToken: getterTypes.GET_CURRENT_USER_TOKEN,
-    }),
+  setup() {
+    const userStore = useUserStore();
 
+    // Access getters
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
+
+    return {
+      userStatus,
+      adminStatus,
+      userToken,
+    };
   },
+
+
   methods: {
     sendmessagetoadmin() {
       sendMessageToAdmin(this.messageToPost, this.userToken)

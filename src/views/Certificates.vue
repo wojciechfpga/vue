@@ -58,15 +58,12 @@
 
 <script>
 
-import VueIframe from 'vue-iframes';
-import * as getterTypes from '@/store/getter-types';
+
+import * as getterTypes from '@/stores/getter-types';
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 export default {
   name: 'Certificates',
-  components: {
-    VueIframe,
-  },
   setup() {
     const userStore = useUserStore();
 

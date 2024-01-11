@@ -22,7 +22,7 @@ const post = (url, emailAdress, password) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const loguser = (emailAdress, password) => post('/login', emailAdress, password);
+const loguser = (emailAdress, password) => post('/api/login', emailAdress, password);
 
 export const useUserStore = defineStore('userStore', {
   state: () => ({

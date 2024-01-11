@@ -5,16 +5,35 @@
 </template>
 
 <script>
-import * as actionTypes from '@/store/action-types';
+import * as actionTypes from '@/stores/action-types';
+import { ref, computed, onMounted } from 'vue';
+import { useUserStore } from '@/stores/user';
   export default {
     name: 'Logout',
     methods: {
       onLogout() {
-        this.$store.dispatch(actionTypes.LOGOUT);
+        this.logoutUser();
     },
     },
+    setup() {
+    const userStore = useUserStore();
+
+    // Access getters
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
+    const logoutUser = () => {
+       userStore.LOGOUT();
+    };
+    return {
+      userStatus,
+      adminStatus,
+      userToken,
+      logoutUser,
+    };
+  },
     created(){
-      this.$store.dispatch(actionTypes.LOGOUT);
+      this.logoutUser();
       setTimeout( () => this.$router.push({ path: '/login'}), 5000);
 }
   }

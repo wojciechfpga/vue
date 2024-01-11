@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import * as getterTypes from '@/store/getter-types';
+import * as getterTypes from '@/stores/getter-types';
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 import axios from 'axios';
@@ -194,7 +194,7 @@ export default {
         return typeFilterPassed;
       });
     },
-  },
+
   created() {
     this.contact();
   },
