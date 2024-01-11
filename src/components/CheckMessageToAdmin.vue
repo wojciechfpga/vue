@@ -9,7 +9,7 @@
 import * as actionTypes from '@/stores/action-types';
 
 import * as getterTypes from '@/stores/getter-types';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 export default {
   name: 'CheckMessageToAdmin',
@@ -19,26 +19,12 @@ export default {
   setup() {
     const userStore = useUserStore();
 
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() =>userStore.GET_CURRENT_USER_TOKEN);
 
-    // Access state
-    const userData = ref(userStore.userData);
-    const userLoading = ref(userStore.userLoading);
-    const userToken = ref(userStore.token);
-
-    // Access getters
-    const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
-
-    // Call actions
-    const loginUser = async (email, password) => {
-      await userStore.LOGIN({ email, password });
-    };
-
-    const logoutUser = () => {
-      userStore.LOGOUT();
-    };
-
-    const fetchCurrentUser = async () => {
-      await userStore.FETCH_CURRENT_USER();
+    const fetchAdminMessage = async () => {
+      await messegesStore.fetchAdminMessage();
     };
 
     // Use onMounted hook to dispatch the action when the component is mounted
@@ -47,13 +33,8 @@ export default {
     });
 
     return {
-      userData,
-      userLoading,
       userToken,
-      userStatus,
-      loginUser,
-      logoutUser,
-      fetchCurrentUser,
+      fetchAdminMessage,
 
     };
   },

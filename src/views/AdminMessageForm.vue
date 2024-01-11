@@ -27,6 +27,8 @@
 import axios from 'axios';
 import * as getterTypes from '@/stores/getter-types';
 import { useUserStore } from '@/stores/user';
+import { useMessageStore } from '@/stores/messegesToAdmin';
+import { ref, computed, onMounted } from 'vue';
 const MAX_DELAY = 2500;
 const postMessage = (url, body, subject, token) => new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -62,9 +64,10 @@ export default {
   },
   setup() {
     const userStore = useUserStore();
-
-    const userToken = ref(userStore.token);
-
+    const messegesTo=useMessageStore();
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
 
     // Use onMounted hook to dispatch the action when the component is mounted
     onMounted(() => {
@@ -80,7 +83,7 @@ export default {
     };
   },
 
-  },
+  
   methods: {
     submitForm() {
       // Perform HTTP POST request using the data

@@ -43,8 +43,8 @@ export default {
     const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
 
     // Access getters
-    const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
-    const adminStatus = ref(userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
     const message = computed(() => messegesStore.GET_MESSAGEAF_LIST);
     // Call actions
     const loginUser = async (email, password) => {
