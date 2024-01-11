@@ -155,13 +155,13 @@ export default {
     const userStore = useUserStore();
     const messegesTo = useMessageStore();
     // Access state
-    const userData = ref(userStore.userData);
-    const userLoading = ref(userStore.userLoading);
-    const userToken = ref(userStore.token);
-    const messagetoadminFirst = ref(messegesTo);
+   // const userData = ref(userStore.userData);
+   // const userLoading = ref(userStore.userLoading);
+   // const messagetoadminFirst = ref(messegesTo);
     // Access getters
     const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
     const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
     // Call actions
     const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
@@ -183,13 +183,13 @@ export default {
     });
 
     return {
-      userData,
-      userLoading,
+    //  userData,
+    //  userLoading,
       userToken,
       userStatus,
-      loginUser,
-      logoutUser,
-      fetchCurrentUser,
+    //  loginUser,
+   //   logoutUser,
+    //  fetchCurrentUser,
       adminStatus,
     };
   },
