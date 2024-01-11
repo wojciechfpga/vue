@@ -127,7 +127,7 @@ export default {
     asubmitForm() {
       console.log('Before postmessage');
       this.isLoading = true;
-      postContact('/newcontact', this.contactForm, this.userToken)
+      postContact('/api/newcontact', this.contactForm, this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
@@ -152,7 +152,7 @@ export default {
       // Perform HTTP POST request using the data
       console.log('Before postmessage');
       this.isLoading = true;
-      getContact('/contacts', this.userToken)
+      getContact('/api/contacts', this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
@@ -183,7 +183,7 @@ export default {
       userToken,
     };
   },
-
+computed:{
     filteredContactList() {
 
       return this.contactList.filter((contact) => {
@@ -194,7 +194,7 @@ export default {
         return typeFilterPassed;
       });
     },
-
+  },
   created() {
     this.contact();
   },

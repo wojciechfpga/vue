@@ -59,7 +59,8 @@
 </template>
 
 <script>
-
+import * as actionTypes from '@/stores/action-types';
+import * as getterTypes from '@/stores/getter-types';
 
 import UsersMessages from '@/components/UsersMessages.vue';
 import CheckMessageToAdmin from '@/components/CheckMessageToAdmin.vue';
