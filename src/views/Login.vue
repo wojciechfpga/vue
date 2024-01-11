@@ -29,7 +29,7 @@ import * as actionTypes from '@/stores/action-types';
 import * as mutationTypes from '@/stores/mutation-types';
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
-import * as getterTypes from '@/store/getter-types';
+import * as getterTypes from '@/stores/getter-types';
 export default {
   name: 'login',
   components: {
