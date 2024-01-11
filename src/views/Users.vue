@@ -188,8 +188,8 @@ const postSetBan = (url,name,token) => new Promise((resolve, reject) => {
 
 const banUser = (name,token) => postSetBan('/banuser',name,token);
 import * as getterTypes from '@/stores/getter-types';
-import { ref, computed, onMounted } from 'vue';
-import { useUserStore } from '@/stores/user';
+
+
 export default {
   name: 'users',
   setup() {
