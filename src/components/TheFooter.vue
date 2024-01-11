@@ -84,45 +84,22 @@ const post = (url,description,type,frequency,token) => new Promise((resolve, rej
 });
 const newSub = (description,type,frequency,token) => post('/subscriberequest',description,type,frequency,token);
 import * as getterTypes from '@/stores/getter-types';
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 export default {
   name: 'TheFooter',
   setup() {
     const userStore = useUserStore();
 
-    // Access state
-    const userData = ref(userStore.userData);
-    const userLoading = ref(userStore.userLoading);
-    const userToken = ref(userStore.token);
-
     // Access getters
-    const userStatus = ref(userStore.GET_CURRENT_USER_STATUS);
-
-    // Call actions
-    const loginUser = async (email, password) => {
-      await userStore.LOGIN({ email, password });
-    };
-
-    const logoutUser = () => {
-      userStore.LOGOUT();
-    };
-
-    const fetchCurrentUser = async () => {
-      await userStore.FETCH_CURRENT_USER();
-    };
-
-    // You can perform any initialization or additional logic in the onMounted hook
-
+    const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
+    const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
+    const userToken = computed(() => userStore.GET_CURRENT_USER_TOKEN);
 
     return {
-      userData,
-      userLoading,
-      userToken,
       userStatus,
-      loginUser,
-      logoutUser,
-      fetchCurrentUser,
+      adminStatus,
+      userToken,
     };
   },
   methods: {

@@ -6,19 +6,22 @@ import * as mutationTypes from './mutation-types';
 import * as getterTypes from './getter-types';
 import router from '@/router/index';
 
+import axios from 'axios';
+
 const MAX_DELAY = 2500;
 
-const post = (url, emailAdress, password) => new Promise((resolve, reject) => {
+const post = (url,emailAdress,password) => new Promise((resolve, reject) => {
   setTimeout(() => {
-    // Use axios or your preferred HTTP client here
-    resolve({ data: 'response data' }); // Replace with actual response handling
-    // axios.post(url, { EmailAdress: emailAdress, Password: password })
-    //   .then((response) => {
-    //     resolve(response.data);
-    //   })
-    //   .catch((error) => {
-    //     reject(error);
-    //   });
+    axios.post(url, {
+      EmailAdress: emailAdress,
+      Password: password
+    })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   }, Math.random() * MAX_DELAY);
 });
 
@@ -34,6 +37,10 @@ export const useUserStore = defineStore('userStore', {
     log: false,
   }),
   mutations: {
+    mutationOfUser(state, userData) {
+      console.log('user mutation');
+      state.userData = userData;
+    },
     [mutationTypes.SET_CURRENT_USER](state, userData) {
       state.userData = userData;
     },
@@ -72,11 +79,12 @@ export const useUserStore = defineStore('userStore', {
   },
   actions: {
     async [actionTypes.LOGIN]({ commit }, { email, password }) {
-      commit(mutationTypes.SET_CURRENT_USER_LOADING, true);
+      console.log('Login begin');
+    //  commit(mutationTypes.SET_CURRENT_USER_LOADING, true);
       await loguser(email, password)
         .then((userData) => {
-          commit(mutationTypes.SET_CURRENT_USER, userData);
-          commit(mutationTypes.SET_CURRENT_STATUS, userData.success);
+          console.log('Login:', userData);
+          this.updateMesseges(userData);
         })
         .catch(() => {
           router.push({ path: '/logfail' });
@@ -86,8 +94,35 @@ export const useUserStore = defineStore('userStore', {
           if (this.log == false) {
             // router.push({ path: '/logfail' });
           }
+          console.log('Login done');
           router.push({ path: '/log' });
         });
+    },
+    async logto( email, password ){
+      console.log('Login begin');
+    //  commit(mutationTypes.SET_CURRENT_USER_LOADING, true);
+      await loguser(email, password)
+        .then((data) => {
+          console.log('Login dane:', data);
+          this.userData=data;
+        })
+        .catch((error) => {
+          console.log('Login blad');
+          console.error("An error occurred:", error.message);
+          router.push({ path: '/logfail' });
+        })
+        .finally(() => {
+          console.log('Login koniec');
+         // commit(mutationTypes.SET_CURRENT_USER_LOADING, false);
+          if (this.log == false) {
+            // router.push({ path: '/logfail' });
+          }
+          console.log('Login done');
+          router.push({ path: '/log' });
+        });
+    },
+    updateUser(payload) {
+      this.mutationOfUser(payload)
     },
     [actionTypes.LOGOUT]({ commit }) {
       commit(mutationTypes.SET_CURRENT_USER, { success: false, userSuccess: false, adminSuccess: false, token: 'no' });

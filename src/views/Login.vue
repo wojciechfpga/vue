@@ -45,11 +45,14 @@ export default {
     const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
     };
+    const loginservice = async (email, password) => {
+      await userStore.logto( email, password );
+    };
     return {
       userStatus,
       adminStatus,
       userToken,
-      loginUser,
+      loginservice,
     };
   },
   data() {
@@ -75,7 +78,7 @@ export default {
         this.error = 'Email must have at least 6 characters';
       } else {
         this.loading = true;
-        await this.loginUser(this.email, this.password);
+        await this.loginservice(this.email, this.password);
         this.result.userSuccess = await this.userStatus;
         this.result.adminSuccess = await this.adminStatus;
         if (this.result.adminSuccess || this.result.adminSuccess) {

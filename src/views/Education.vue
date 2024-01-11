@@ -95,8 +95,8 @@
 </template>
 
 <script>
-
-
+import * as getterTypes from '@/stores/getter-types';
+import axios from 'axios';
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 const MAX_DELAY = 2500;
@@ -202,7 +202,7 @@ export default {
   methods: {
     asubmitForm() {
       console.log('Before postmessage');
-      postEdu('/neweducation', this.educationForm, this.userToken)
+      postEdu('/api/neweducation', this.educationForm, this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
@@ -226,7 +226,7 @@ export default {
       // Perform HTTP POST request using the data
       console.log('Before postmessage');
       this.isLoading = true;
-      getEdu('/geteducation', this.userToken)
+      getEdu('/api/geteducation', this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
