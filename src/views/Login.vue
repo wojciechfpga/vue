@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-  <p>{{ loading }}</p>
   <div v-show="userStatus">
     <h1>Zalogowano pomyślnie, zaraz nastąpi przekierowanie do strony głównej</h1>
   </div>

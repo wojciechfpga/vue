@@ -4,22 +4,22 @@
       <div class="row">
         <div class="footer-col">
           <ul>
-            <li><a href="/education">Wykształcenie</a></li>
-            <li><a href="/experience">Doświadczenie</a></li>
+            <li><router-link class="highlight-box" to="/education">Wykształcenie</router-link></li>
+            <li> <router-link class="highlight-box" to="/experience">Doświadczenie</router-link></li>
           </ul>
           <div class="gradient-line"></div>
         </div>
         <div class="footer-col">
           <ul>
-            <li><a href="/problem">Zgłoś problem</a></li>
-            <li><a href="/copyrights">Prawa autorskie</a></li>
+            <li><router-link class="highlight-box" to="/problem">Zgłoś problem</router-link></li>
+            <li><router-link class="highlight-box" to="/copyrights">Prawa autorskie</router-link></li>
           </ul>
           <div class="gradient-line"></div>
         </div>
         <div class="footer-col">
           <ul>
-            <li><a href="/certificates">Ceryfikaty</a></li>
-            <li><a href="/links">Linki</a></li>
+            <li>      <router-link class="highlight-box" to="/certificates">Certyfikaty</router-link></li>
+            <li> <router-link class="highlight-box" to="/links">Linki</router-link></li>
           </ul>
           <div class="gradient-line"></div>
         </div>

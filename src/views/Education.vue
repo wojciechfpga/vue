@@ -179,7 +179,7 @@ export default {
     };
   },
 
-
+computed:{
     filteredEduList() {
       const upperDate = this.upperDateFilter ? new Date(this.upperDateFilter) : null;
       const lowerDate = this.lowerDateFilter ? new Date(this.lowerDateFilter) : null;
@@ -198,7 +198,7 @@ export default {
         return dateFilterPassed && degreeFilterPassed;
       });
     },
-  
+},
   methods: {
     asubmitForm() {
       console.log('Before postmessage');

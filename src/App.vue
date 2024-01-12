@@ -35,19 +35,19 @@ export default {
     const messegesStore = useMessegesFromAdminStore();
 
     // Access state
-    const userData = ref(userStore.userData);
-    const userLoading = ref(userStore.userLoading);
-    const userToken = ref(userStore.token);
+//    const userData = ref(userStore.userData);
+   // const userLoading = ref(userStore.userLoading);
+  //  const userToken = ref(userStore.token);
 
     // Access messegesFromAdmin state
-    const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
+  //  const messegesFromAdminState = ref(messegesStore.messagestoadminFirst);
 
     // Access getters
     const userStatus = computed(() => userStore.GET_CURRENT_USER_STATUS);
     const adminStatus = computed(() => userStore.GET_CURRENT_USER_ADMIN_STATUS);
     const message = computed(() => messegesStore.GET_MESSAGEAF_LIST);
     // Call actions
-    const loginUser = async (email, password) => {
+    /*const loginUser = async (email, password) => {
       await userStore.LOGIN({ email, password });
     };
 
@@ -65,6 +65,11 @@ export default {
     onMounted(() => {
       // Call the action to fetch messages when the component is mounted
       messegesStore.fetchAdminMessageAF();
+    });*/
+    onMounted(() => {
+      // Call the action to fetch messages when the component is mounted
+      console.log('wywolane  - messeges AF - on mounted')
+      messegesStore.fetchAdminMessageAF();
     });
     // Use onMounted hook to dispatch the action when the component is mounted
     //onMounted(() => {
@@ -72,22 +77,23 @@ export default {
     //});
 
     return {
-      userData,
-      userLoading,
-      userToken,
+   //   userData,
+    //  userLoading,
+   //   userToken,
       userStatus,
-      loginUser,
-      logoutUser,
-      fetchCurrentUser,
-      messegesFromAdminState,
+    //  loginUser,
+     // logoutUser,
+    //  fetchCurrentUser,
+  //    messegesFromAdminState,
       adminStatus,
       message,
     };
   },
  
   created() {
-    const myStore = useMessegesFromAdminStore();
-    myStore.fetchAdminMessageAF();
+  //  console.log('wywolane create - messeges AF')
+ //   const myStore = useMessegesFromAdminStore();
+  //  myStore.fetchAdminMessageAF();
   },
 };
 </script>
