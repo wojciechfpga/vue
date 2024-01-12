@@ -145,10 +145,10 @@ export default {
 }
 
 .social-links a {
-  display: inline-block;
+  display: inline-block !important;
   height: 30px;
   width: 30px;
-  margin-right: 10px;
+  margin-right: 35px !important;
   text-align: center;
   line-height: 30px;
   border-radius: 50%;
@@ -164,10 +164,10 @@ export default {
 }
 
 .social-links a[data-v-dd042928] {
-  display: inline-block;
+  display: inline-block !important;
   height: 60px !important; /* Adjust the size as needed */
   width: 60px !important; /* Adjust the size as needed */
-  margin-right: 10px;
+  margin-right: 35px !important;
   text-align: center;
   line-height: 80px; /* Increase the line-height to create more spacing */
   border-radius: 50%;
@@ -188,17 +188,7 @@ export default {
 .social-links i {
   border: none !important;
 }
-.footer-col .social-links a[data-v-49c9d9a5] {
-    display: inline-block;
-    height: 20px;
-    width: 50px;
-    margin: 0 10px 10px 0;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    color: black;
-    transition: all 0.5s ease;
-}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -263,23 +253,7 @@ export default {
   list-style-type: none;
 }
 
-.footer-col .social-links a {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
-  ;
-  margin: 0 10px 10px 0;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: black;
-  transition: all 0.5s ease;
-}
 
-.footer-col .social-links a:hover {
-  color: #24262b;
-  background-color: black;
-}
 
 /*responsive*/
 @media(max-width: 767px) {
