@@ -25,6 +25,13 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
-    }
+    },
+    middlewares: [
+      (req, res, next) => {
+        // Set the Referrer Policy header
+        res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+        next();
+      },
+    ],
   }
 })
