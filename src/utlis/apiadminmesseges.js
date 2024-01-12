@@ -14,7 +14,7 @@ const get = (url) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getMessages = () => get('/api/messagesfromadmin');
+const getMessages = () => get('https://wojciechlasowskiapi.azurewebsites.net/messagesfromadmin');
 export default getMessages;
 // export {
 // eslint-disable-next-line
