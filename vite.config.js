@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 const API_URI = process.env.NODE_ENV === 'production'
   ? 'https://wojciechlasowskiapi.azurewebsites.net'    // in prod
-  : 'http://localhost:5815' // in dev
+  : 'https://wojciechlasowskiapi.azurewebsites.net' // in dev
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -21,17 +21,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: API_URI,
+        target: 'https://wojciechlasowskiapi.azurewebsites.net',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
+        host: 'https://storagekontowojtek.z6.web.core.windows.net/', // Add 
       }
-    },
-    middlewares: [
-      (req, res, next) => {
-        // Set the Referrer Policy header
-        res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-        next();
-      },
-    ],
+    }
   }
 })
