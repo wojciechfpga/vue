@@ -36,7 +36,7 @@ const get = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getMessagesFromAdmin = (token) => get('/api/messagesfromadmin',token);
+const getMessagesFromAdmin = (token) => get('https://wojciechlasowskiapi.azurewebsites.net/messagesfromadmin',token);
 import Loader from '@/components/Loader.vue';
 export default {
   name: 'MessagesFromAdmin',

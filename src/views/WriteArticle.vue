@@ -60,7 +60,7 @@ const post = (url, data, token) => new Promise((resolve, reject) => {
 });
 
 
-const sendNewArticle = (formData, token) => post('/newarticle', formData, token);
+const sendNewArticle = (formData, token) => post('https://wojciechlasowskiapi.azurewebsites.net/newarticle', formData, token);
 export default {
   name: 'WriteArticle',
   data() {

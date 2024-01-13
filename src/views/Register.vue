@@ -45,7 +45,7 @@ const post = (url,emailAdress,password) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const postUser = (emailAdress, password) => post('/api/register',emailAdress, password);
+const postUser = (emailAdress, password) => post('https://wojciechlasowskiapi.azurewebsites.net/register',emailAdress, password);
 export default {
   name: 'Register',
   components: {

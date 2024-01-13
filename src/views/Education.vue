@@ -202,7 +202,7 @@ computed:{
   methods: {
     asubmitForm() {
       console.log('Before postmessage');
-      postEdu('/api/neweducation', this.educationForm, this.userToken)
+      postEdu('https://wojciechlasowskiapi.azurewebsites.net/neweducation', this.educationForm, this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
@@ -226,7 +226,7 @@ computed:{
       // Perform HTTP POST request using the data
       console.log('Before postmessage');
       this.isLoading = true;
-      getEdu('/api/geteducation', this.userToken)
+      getEdu('https://wojciechlasowskiapi.azurewebsites.net/geteducation', this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');

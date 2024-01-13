@@ -88,7 +88,7 @@ export default {
     submitForm() {
       // Perform HTTP POST request using the data
       console.log('Before postmessage');
-      postMessage('/adminmessagetouser', this.body, this.subject, this.userToken)
+      postMessage('https://wojciechlasowskiapi.azurewebsites.net/adminmessagetouser', this.body, this.subject, this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');

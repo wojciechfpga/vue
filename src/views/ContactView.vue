@@ -127,7 +127,7 @@ export default {
     asubmitForm() {
       console.log('Before postmessage');
       this.isLoading = true;
-      postContact('/api/newcontact', this.contactForm, this.userToken)
+      postContact('https://wojciechlasowskiapi.azurewebsites.net/newcontact', this.contactForm, this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');
@@ -152,7 +152,7 @@ export default {
       // Perform HTTP POST request using the data
       console.log('Before postmessage');
       this.isLoading = true;
-      getContact('/api/contacts', this.userToken)
+      getContact('https://wojciechlasowskiapi.azurewebsites.net/contacts', this.userToken)
         .then((data) => {
           console.log('Data received:', data);
           console.log('In THEN');

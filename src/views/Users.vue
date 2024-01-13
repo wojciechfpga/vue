@@ -98,7 +98,7 @@ const getSub = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getSubscribtions = (token) => getSub('/getallsubscribtion',token);
+const getSubscribtions = (token) => getSub('https://wojciechlasowskiapi.azurewebsites.net/getallsubscribtion',token);
 const getIP = (url,token) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url, {
@@ -114,7 +114,7 @@ const getIP = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getIPs = (token) => getIP('/getips',token);
+const getIPs = (token) => getIP('https://wojciechlasowskiapi.azurewebsites.net/getips',token);
 const getU = (url,token) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url, {
@@ -130,7 +130,7 @@ const getU = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getUsers= (token) => getU('/allusers',token);
+const getUsers= (token) => getU('https://wojciechlasowskiapi.azurewebsites.net/allusers',token);
 const postBan = (url,ipAdress,token) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.post(url, {
@@ -150,7 +150,7 @@ const postBan = (url,ipAdress,token) => new Promise((resolve, reject) => {
 
 
 
-const ban = (ipAdress,token) => postBan('/ban',ipAdress,token);
+const ban = (ipAdress,token) => postBan('https://wojciechlasowskiapi.azurewebsites.net/ban',ipAdress,token);
 const getBanned = (url,token) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.get(url, {
@@ -166,7 +166,7 @@ const getBanned = (url,token) => new Promise((resolve, reject) => {
   }, Math.random() * MAX_DELAY);
 });
 
-const getBans= (token) => getBanned('/bannedips',token);
+const getBans= (token) => getBanned('https://wojciechlasowskiapi.azurewebsites.net/bannedips',token);
 const postSetBan = (url,name,token) => new Promise((resolve, reject) => {
   setTimeout(() => {
     axios.post(url, {
@@ -186,7 +186,7 @@ const postSetBan = (url,name,token) => new Promise((resolve, reject) => {
 
 
 
-const banUser = (name,token) => postSetBan('/banuser',name,token);
+const banUser = (name,token) => postSetBan('https://wojciechlasowskiapi.azurewebsites.net/banuser',name,token);
 import * as getterTypes from '@/stores/getter-types';
 
 

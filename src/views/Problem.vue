@@ -42,7 +42,7 @@ const post = (url,messageToAdmin,token) => new Promise((resolve, reject) => {
 
 
 
-const sendMessageToAdmin = (messageToAdmin,token) => post('/messagetoadmin',messageToAdmin,token);
+const sendMessageToAdmin = (messageToAdmin,token) => post('https://wojciechlasowskiapi.azurewebsites.net/messagetoadmin',messageToAdmin,token);
 export default {
   name: 'Problem',
   data() {
