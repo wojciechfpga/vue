@@ -1,13 +1,13 @@
 <template>
   <div>
-    <router-link v-if="!AlreadyLogin" to="/login">
+    <router-link v-if="!AlreadyLogin" to="/login" class="container">
       <button class="log">Zaloguj</button>
     </router-link>
     <router-link v-if="!AlreadyLogin" to="/register">
       <button class="reg">Zarejerstruj się</button>
     </router-link>
 
-    <router-link v-if="AlreadyLogin" to="/logout" @click="setButton">
+    <router-link v-if="AlreadyLogin" to="/logout" class="container">
       <button class="log">Wyloguj</button>
     </router-link>
   </div>
