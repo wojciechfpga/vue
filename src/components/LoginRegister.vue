@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <router-link v-if="!AlreadyLogin" to="/login" class="container">
+    <div class="container">
+    <router-link v-if="!AlreadyLogin" to="/login">
       <button class="log">Zaloguj</button>
     </router-link>
     <router-link v-if="!AlreadyLogin" to="/register">
       <button class="reg">Zarejerstruj się</button>
     </router-link>
-
+  </div>
+  <div class="container">
     <router-link v-if="AlreadyLogin" to="/logout" class="container">
       <button class="log">Wyloguj</button>
     </router-link>
