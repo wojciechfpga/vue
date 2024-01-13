@@ -1,33 +1,34 @@
 <template>
-<div class="container" v-show="AlreadyLogin==false">
   <div>
-    <button class="log" onclick="document.location='login'">Zaloguj</button>
-    <button class="reg" onclick="document.location='register'">Zarejerstruj się</button>
-  </div>
-</div>
+    <router-link v-if="!AlreadyLogin" to="/login">
+      <button class="log">Zaloguj</button>
+    </router-link>
+    <router-link v-if="!AlreadyLogin" to="/register">
+      <button class="reg">Zarejerstruj się</button>
+    </router-link>
 
-<div class="container" v-show="AlreadyLogin==true">
-  <div>
-    <button class="log" onclick="document.location='logout'" v-on:click="setButton">Wyloguj</button>
+    <router-link v-if="AlreadyLogin" to="/logout" @click="setButton">
+      <button class="log">Wyloguj</button>
+    </router-link>
   </div>
-</div>
 </template>
 
 <script>
-  export default {
-    name:'LoginRegister',
-    props:
-    {
-      IsToken: Boolean,
-    },
-    computed: {
+export default {
+  name: 'LoginRegister',
+  props: {
+    IsToken: Boolean,
+  },
+  computed: {
     AlreadyLogin() {
       return this.IsToken;
     },
-
-    }
-
-
+  },
+  methods: {
+    setButton() {
+      // Handle your logout logic here
+    },
+  },
 };
 </script>
 
