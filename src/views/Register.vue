@@ -20,7 +20,6 @@
       </div>
     </div>
   </div>
-  <p>{{ success }}</p>
 </template>
 
 <script>
