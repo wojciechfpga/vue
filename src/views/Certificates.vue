@@ -5,11 +5,7 @@
 
 
       <div class="column">
-        <div class="styled-box" @click="redirectToPageVueB()">
-          <img src="https://static01.helion.com.pl/global/okladki/145x218/vvujev.jpg" alt="Your Image Description">
 
-
-        </div>
 
         <div class="styled-box">
 
@@ -20,11 +16,7 @@
       </div>
 
       <div class="column">
-        <div class="styled-box" @click="redirectToPageVueA()">
-          <img src="https://static01.helion.com.pl/global/okladki/181x236/vzbudu.jpg" alt="Your Image Description">
 
-
-        </div>
 
         <div class="styled-box">
 
@@ -35,11 +27,7 @@
       </div>
 
       <div class="column">
-        <div class="styled-box" @click="redirectToPageDocker()">
-          <img src="https://img-c.udemycdn.com/course/240x135/2065437_077c_4.jpg" alt="Your Image Description">
 
-
-        </div>
 
         <div class="styled-box">
 
@@ -84,17 +72,17 @@ export default {
   },
   methods: {
     redirectToPageVueB() {
-    // Replace 'your_destination_page.html' with the actual URL you want to redirect to
-    window.location.href = 'https://helion.pl/kurs/vue-js-kurs-video-sprawne-i-szybkie-pisanie-aplikacji-webowych-jaroslaw-baca,vvujev.htm#format/w';
-  },
-  redirectToPageVueA() {
-    // Replace 'your_destination_page.html' with the actual URL you want to redirect to
-    window.location.href = 'https://helion.pl/kurs/vue-js-w-praktyce-kurs-video-poznaj-narzedzia-web-developera-vue-js-typescript-miro-firebase-grzegorz-wazny,vzbudu.htm#format/w';
-  },
-  redirectToPageDocker() {
-    // Replace 'your_destination_page.html' with the actual URL you want to redirect to
-    window.location.href = 'https://www.udemy.com/course/docker-od-podstaw-dla-programistow-i-nie-tylko/';
-  },
+      // Replace 'your_destination_page.html' with the actual URL you want to redirect to
+      window.location.href = 'https://helion.pl/kurs/vue-js-kurs-video-sprawne-i-szybkie-pisanie-aplikacji-webowych-jaroslaw-baca,vvujev.htm#format/w';
+    },
+    redirectToPageVueA() {
+      // Replace 'your_destination_page.html' with the actual URL you want to redirect to
+      window.location.href = 'https://helion.pl/kurs/vue-js-w-praktyce-kurs-video-poznaj-narzedzia-web-developera-vue-js-typescript-miro-firebase-grzegorz-wazny,vzbudu.htm#format/w';
+    },
+    redirectToPageDocker() {
+      // Replace 'your_destination_page.html' with the actual URL you want to redirect to
+      window.location.href = 'https://www.udemy.com/course/docker-od-podstaw-dla-programistow-i-nie-tylko/';
+    },
   },
 
 }
@@ -113,8 +101,9 @@ export default {
   position: relative;
   /* You can adjust the padding as needed */
   display: flex;
+
   &:hover {
-    cursor:grab;
+    cursor: grab;
   }
 }
 

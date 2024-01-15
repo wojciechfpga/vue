@@ -1,6 +1,6 @@
 <template>
   <div v-if="isLoading==false">
-    <h1>Komunikatry od administrator strony:</h1>
+    <h1>Komunikaty od administrator strony:</h1>
     <div v-for="x in messages" :key="x.message" class="message-box">
       <div class="message-text">
         <p>{{ x.message }}</p>

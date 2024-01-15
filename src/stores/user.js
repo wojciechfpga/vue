@@ -124,8 +124,9 @@ export const useUserStore = defineStore('userStore', {
     updateUser(payload) {
       this.mutationOfUser(payload)
     },
-    [actionTypes.LOGOUT]({ commit }) {
-      commit(mutationTypes.SET_CURRENT_USER, { success: false, userSuccess: false, adminSuccess: false, token: 'no' });
+    [actionTypes.LOGOUT]() {
+      console.log('Logout begin');
+      this.userData= { success: false, userSuccess: false, adminSuccess: false, token: 'no' };
       // return logout();
     },
     [actionTypes.FETCH_CURRENT_USER]({ commit, getters }) {

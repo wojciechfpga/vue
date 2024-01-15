@@ -12,14 +12,14 @@
         <div class="footer-col">
           <ul>
             <li><router-link class="highlight-box" to="/problem">Zgłoś problem</router-link></li>
-            <li><router-link class="highlight-box" to="/copyrights">Prawa autorskie</router-link></li>
+            <li><router-link class="highlight-box" to="/copyrights">Polityka prywatności</router-link></li>
           </ul>
           <div class="gradient-line"></div>
         </div>
         <div class="footer-col">
           <ul>
             <li>      <router-link class="highlight-box" to="/certificates">Certyfikaty</router-link></li>
-            <li> <router-link class="highlight-box" to="/links">Linki</router-link></li>
+            <li> <router-link class="highlight-box" to="/links">Kod źródłowy strony</router-link></li>
           </ul>
           <div class="gradient-line"></div>
         </div>

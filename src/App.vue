@@ -3,9 +3,10 @@
     <the-header />
     <login-register :IsToken="userStatus || adminStatus" />
     <div class="main-container">
+      <!-- Dodaj PrivacyPolicyButton -->
+      <privacy-policy-button />
       <router-view class="routerc" />
       <div>
-        <!-- MessagesBox component goes here -->
         <messages-box :messagefromadmin="message" />
       </div>
     </div>
@@ -21,6 +22,7 @@ import MessagesBox from '@/components/MessagesBox.vue';
 import { ref, computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/user';
 import { useMessegesFromAdminStore } from '@/stores/messegesFromAdmin';
+import PrivacyPolicyButton from '@/components/PrivacyPolicyButton.vue'; // Dodaj ten import
 
 export default {
   name: 'App',
@@ -29,6 +31,7 @@ export default {
     TheFooter,
     LoginRegister,
     MessagesBox,
+    PrivacyPolicyButton, // Dodaj ten komponent
   },
   setup() {
     const userStore = useUserStore();
