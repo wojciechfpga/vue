@@ -17,7 +17,7 @@
     </div>
   </div>
   <div v-else>
-    <h1>Zalogowano pomyślnie, zaraz nastąpi przekierowanie do strony głównej</h1>
+<loader/>
   </div>
 </template>
 
