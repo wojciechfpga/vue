@@ -1,6 +1,7 @@
 <template>
-  <div v-if="isLoading == false">
-    <div v-if="userStatus || adminStatus">
+  <div v-if="userStatus || adminStatus">
+    <div v-if="isLoading == false">
+
       <div v-if="adminStatus">
         <form @submit.prevent="asubmitForm">
           <div class="form-group">
@@ -53,12 +54,13 @@
     </div>
 
 
+
     <div v-else>
-      <h1>Proszę się zalogować (dane w CV) aby zobaczyć tę stronę</h1>
+      <loader />
     </div>
   </div>
   <div v-else>
-    <loader />
+    <h1>Proszę się zalogować (dane w CV) aby zobaczyć tę stronę</h1>
   </div>
 </template>
 
@@ -184,7 +186,7 @@ export default {
       userToken,
     };
   },
-computed:{
+  computed: {
     filteredContactList() {
 
       return this.contactList.filter((contact) => {
@@ -257,13 +259,15 @@ computed:{
   /* Set the width to 300 pixels */
   height: 250px;
 }
+
 .gradient-line {
   content: '';
   width: 80%;
   height: 2px;
-  background: linear-gradient(to right, violet, red); /* Gradient colors */
+  background: linear-gradient(to right, violet, red);
+  /* Gradient colors */
   transform: translateY(-50%);
-  margin:10px;
+  margin: 10px;
 }
 
 .edu-details {
