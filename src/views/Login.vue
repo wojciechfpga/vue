@@ -1,5 +1,6 @@
 <template>
-  <div class="appear" v-show="!loading">
+
+  <div class="appear" v-if="!loading">
     <div class="position">
       <div class="main">
         <input type="checkbox" id="chk" aria-hidden="true">
@@ -14,6 +15,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div v-else>
+    <h1>Zalogowano pomyślnie, zaraz nastąpi przekierowanie do strony głównej</h1>
   </div>
 </template>
 
@@ -41,7 +45,7 @@ export default {
       await userStore.LOGIN({ email, password });
     };
     const loginservice = async (email, password) => {
-      await userStore.logto( email, password );
+      await userStore.logto(email, password);
     };
     return {
       userStatus,
