@@ -1,5 +1,4 @@
 <template>
-      <Loader v-show="loading" />
   <div class="appear" v-show="!loading">
     <div class="position">
       <div class="main">
