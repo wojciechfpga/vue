@@ -225,7 +225,7 @@ computed:{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 700px;
   /* Adjust max-width as needed */
   margin-bottom: 20px;
 }
