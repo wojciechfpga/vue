@@ -18,7 +18,7 @@
         <p> 2017-2018</p>
     </div>
     <div v-else>
-      <h1>Proszę się zalogować (dane w CV) aby zobaczyć tę stronę</h1>
+      <h1>Proszę się zalogować (dane w CV), aby zobaczyć tę stronę</h1>
     </div>
 </template>
 

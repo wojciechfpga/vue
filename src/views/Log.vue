@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-show="logstatuser || logstatadmin">
-      <h1>Zalogowano poprawnie</h1>
+      <h1>Zalogowano poprawnie, zaraz nastąpi przekierowanie do strony głównej</h1>
     </div>
     <div v-show="!logstatuser && !logstatadmin">
       <h1>Zalogowano niepoprawnie</h1>
