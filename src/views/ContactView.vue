@@ -44,7 +44,7 @@
       </div>
 
       <div class="edu-container-wrapper">
-        <div v-for="x in filteredContactList" :key="x.content" class="edu-container">
+        <div v-for="x in filteredContactList" :key="x.content" class="edu-container gradient-line">
           <h1>{{ x.type }}</h1>
           <h2>{{ x.content }}</h2>
         </div>
@@ -225,7 +225,7 @@ computed:{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 700px;
+  max-width: 600px;
   /* Adjust max-width as needed */
   margin-bottom: 20px;
 }
@@ -252,9 +252,20 @@ computed:{
   border-radius: 24px;
   padding: 16px;
   margin-bottom: 16px;
-  width: 400px;
+  width: 500px;
   /* Set the width to 300 pixels */
   height: 200px;
+  position: relative;
+}
+.gradient-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, violet, pink); /* Gradient colors */
+  transform: translateY(-50%);
 }
 
 .edu-details {
