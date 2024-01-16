@@ -252,9 +252,9 @@ computed:{
   border-radius: 24px;
   padding: 16px;
   margin-bottom: 16px;
-  width: 500px;
+  width: 550px;
   /* Set the width to 300 pixels */
-  height: 200px;
+  height: 250px;
   position: relative;
 }
 .gradient-line::before {
@@ -264,8 +264,9 @@ computed:{
   top: 50%;
   width: 100%;
   height: 3px;
-  background: linear-gradient(to right, violet, pink); /* Gradient colors */
+  background: linear-gradient(to right, violet, green); /* Gradient colors */
   transform: translateY(-50%);
+  margin:10px;
 }
 
 .edu-details {
