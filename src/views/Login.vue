@@ -1,5 +1,4 @@
 <template>
-
   <div class="appear" v-if="!loading">
     <div class="position">
       <div class="main">
@@ -17,7 +16,7 @@
     </div>
   </div>
   <div v-else>
-<loader/>
+    <loader />
   </div>
 </template>
 
