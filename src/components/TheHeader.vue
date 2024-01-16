@@ -168,7 +168,38 @@ a {
 
 @media only screen and (max-width: 600px) {
   .navLink {
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    padding: 10px; /* Adjust padding for better spacing on small screens */
   }
-}</style>
+}
+
+@media only screen and (max-width: 600px) {
+  .social-links a {
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+  }
+
+  .social-links a:hover {
+    background-color: #333;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .highlight-box {
+    height: auto;
+    margin-top: 5px;
+    font-weight: normal;
+    border-radius: 5px;
+  }
+
+  .highlight-box:hover {
+    background-color: initial;
+    height: auto;
+    color: initial;
+    margin-top: 5px;
+    font-weight: normal;
+    border-radius: 5px;
+  }
+}
+</style>

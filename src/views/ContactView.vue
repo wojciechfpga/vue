@@ -46,7 +46,7 @@
       <div class="edu-container-wrapper">
         <div v-for="x in filteredContactList" :key="x.content" class="edu-container">
           <h1>{{ x.type }}</h1>
-          <p>{{ x.content }}</p>
+          <h2>{{ x.content }}</h2>
         </div>
       </div>
     </div>
