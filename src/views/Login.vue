@@ -16,9 +16,6 @@
       </div>
     </div>
   </div>
-  <div v-show="userStatus">
-    <h1>Zalogowano pomyślnie, zaraz nastąpi przekierowanie do strony głównej</h1>
-  </div>
 </template>
 
 <script>

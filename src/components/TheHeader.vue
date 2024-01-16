@@ -121,6 +121,7 @@ export default {
   font-weight: bold;
 
   transition: width 0.5s ease-out, height 0.5s ease-out;
+  border-radius: 5px 5px 0 0;
 }
 
 .navbarmain {
@@ -150,6 +151,8 @@ export default {
 
   font-size: 1.5rem;
   border-bottom: 1px solid white;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .spacer {

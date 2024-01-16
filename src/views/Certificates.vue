@@ -11,7 +11,7 @@
 
           <embed
             src="https://storagekontowojtek.blob.core.windows.net/article-images/3fd11fe896c1eb76ead18af865baf26c.pdf"
-            type="application/pdf" width="80%">
+            type="application/pdf" width="100%">
         </div>
       </div>
 
@@ -22,7 +22,7 @@
 
           <embed
             src="https://storagekontowojtek.blob.core.windows.net/article-images/215a84cb8e6c78888e1ffefbd40da2e2.pdf"
-            type="application/pdf" width="80%">
+            type="application/pdf" width="100%">
         </div>
       </div>
 
@@ -33,7 +33,7 @@
 
           <embed
             src="https://storagekontowojtek.blob.core.windows.net/article-images/UC-06c902af-8355-49f5-9b15-acc8f76a0985.jpg"
-            type="application/pdf" width="80%">
+            type="application/pdf" width="100%">
         </div>
       </div>
     </div>
@@ -90,7 +90,8 @@ export default {
 
 <style lang="scss" scoped>
 .styled-box {
-  max-width: 1000px;
+  width: 800px;
+  height: 500px;
   background-color: #ffffff;
   border: 2px solid #3498db;
   border-radius: 8px;
