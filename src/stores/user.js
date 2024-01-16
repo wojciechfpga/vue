@@ -103,16 +103,16 @@ export const useUserStore = defineStore('userStore', {
     //  commit(mutationTypes.SET_CURRENT_USER_LOADING, true);
       await loguser(email, password)
         .then((data) => {
-          console.log('Login dane:', data);
+          console.log('Login data:', data);
           this.userData=data;
         })
         .catch((error) => {
-          console.log('Login blad');
+          console.log('Login err');
           console.error("An error occurred:", error.message);
           router.push({ path: '/logfail' });
         })
         .finally(() => {
-          console.log('Login koniec');
+          console.log('Login end');
          // commit(mutationTypes.SET_CURRENT_USER_LOADING, false);
           if (this.log == false) {
             // router.push({ path: '/logfail' });

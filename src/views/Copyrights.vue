@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="privacyclass">
     <div class="headc">
       <h1>Polityka Prywatności</h1>
     </div>
@@ -83,38 +83,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  margin: 20px;
-}
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px;
+  }
 
-.headp {
-  background-color: #f2f2f2;
-  padding: 20px;
-  text-align: center;
-}
+  .privacyclass {
+    text-align: justify;
+    width: 50%;
+    line-height: 200%;
+  }
 
-section {
-  margin-bottom: 20px;
-}
+  .headp {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+  }
 
-h1 {
-  color: #333;
-}
+  section {
+    margin-bottom: 20px;
+  }
 
-h2 {
-  color: #555;
-}
+  h1 {
+    color: #333;
+  }
 
-p {
-  margin-bottom: 10px;
-}
+  h2 {
+    color: #555;
+  }
 
-.footc {
-  margin-top: 20px;
-  text-align: center;
-  color: #777;
-}
+  p {
+    margin-bottom: 10px;
+  }
+
+  /* Dodaj wcięcie dla pierwszej linii paragrafu w sekcji */
+  section p {
+    text-indent: 20px; /* Możesz dostosować wartość według swoich preferencji */
+  }
+
+  .footc {
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+  }
 </style>
