@@ -1,6 +1,5 @@
 <template>
   <div class="privacyclass">
-    <h1>Zrealizowane projekty</h1>
     <div class="article-box">
       <div class="article-header">Back-end tej strony</div>
       <div class="gradient-line"></div>
@@ -24,6 +23,7 @@
 
 
   </div>
+
 </template>
 
 <script>
@@ -61,6 +61,7 @@ export default {
   text-align: justify;
   width: 50%;
   line-height: 200%;
+  width: 80% !important;
 }
 
 .styled-box {
